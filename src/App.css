@@ -1,11 +1,13 @@
-.App {
-  text-align: center;
+main {
+  width: 800px;
+  margin: auto;
 }
 
 .App-header {
-  background-color: skyblue;
   height: 50px;
   padding: 5px;
+  text-align: center;
+  background-color: skyblue;
   color: black;
 }
 
