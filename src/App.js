@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import { Route } from "react-router-dom";
 import VerbList from "./VerbList";
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
           <h1 className="App-title">Verbs Challenge</h1>
         </header>
         <main>
-          <VerbList />
+          <Route exact path="/data/verbs" component={VerbList} />
         </main>
       </div>
     );
