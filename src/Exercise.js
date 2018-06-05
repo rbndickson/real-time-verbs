@@ -27,6 +27,11 @@ class Exercise extends Component {
     return [sample(pronouns), sample(verbs), sample(["O", "X", "?"])];
   }
 
+  handleNextQuestion() {
+    const sampledQuestion = this.sampledQuestion();
+    this.setState({ question: sampledQuestion });
+  }
+
   render() {
     const Fragment = React.Fragment;
 
@@ -47,6 +52,7 @@ class Exercise extends Component {
         <div className="Exercise-question">
           {this.state.question.map(e => <span key={e}>{e}</span>)}
         </div>
+        <button onClick={() => this.handleNextQuestion()}>Next Question</button>
       </Fragment>
     );
   }
