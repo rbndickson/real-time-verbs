@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { Link, Route } from "react-router-dom";
 import VerbList from "./VerbList";
-import Exercise from "./Exercise";
+import Practise from "./Practise";
 import SharedExercise from "./SharedExercise";
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
         <main>
           <Route exact path="/data/verbs" component={VerbList} />
           <Route path="/shared/:token" component={SharedExercise} />
-          <Route exact path="/" component={Exercise} />
+          <Route exact path="/" component={Practise} />
         </main>
       </div>
     );
