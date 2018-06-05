@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { exercises } from "./exercises";
+import "./Exercise.css";
 import { pronouns, verbs } from "./words";
 import { sample } from "./utils/helpers";
 
