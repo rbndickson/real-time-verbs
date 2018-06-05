@@ -14,14 +14,13 @@ class Exercise extends Component {
   };
 
   componentDidMount() {
-    const instruction = exercises.past.instruction;
-    const examples = exercises.past.examples;
-    const sampledQuestion = this.sampledQuestion();
+    const { instruction, examples } = exercises.past;
+    const question = this.sampledQuestion();
 
     this.setState({
-      instruction: instruction,
-      examples: examples,
-      question: sampledQuestion
+      instruction,
+      examples,
+      question
     });
   }
 
@@ -30,8 +29,8 @@ class Exercise extends Component {
   }
 
   handleNextQuestion() {
-    const sampledQuestion = this.sampledQuestion();
-    this.setState({ question: sampledQuestion });
+    const question = this.sampledQuestion();
+    this.setState({ question });
   }
 
   render() {
