@@ -3,6 +3,7 @@ import { exercises } from "./exercises";
 import "./Exercise.css";
 import { pronouns, verbs } from "./words";
 import { sample } from "./utils/helpers";
+import io from "socket.io-client";
 
 class Exercise extends Component {
   state = {
@@ -10,6 +11,8 @@ class Exercise extends Component {
     examples: [],
     question: []
   };
+
+  socket = io("http://localhost:4001");
 
   componentDidMount() {
     const instruction = exercises.past.instruction;
@@ -21,6 +24,12 @@ class Exercise extends Component {
       examples: examples,
       question: sampledQuestion
     });
+
+    this.socket.on("receive question", payload => {
+      this.setState({ question: payload.question });
+    });
+
+    this.socket.emit("question", { question: sampledQuestion });
   }
 
   sampledQuestion() {
@@ -29,6 +38,7 @@ class Exercise extends Component {
 
   handleNextQuestion() {
     const sampledQuestion = this.sampledQuestion();
+    this.socket.emit("question", { question: sampledQuestion });
     this.setState({ question: sampledQuestion });
   }
 
