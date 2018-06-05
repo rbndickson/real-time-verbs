@@ -1,20 +1,29 @@
 import React, { Component } from "react";
 import { exercises } from "./exercises";
+import { pronouns, verbs } from "./words";
+import { sample } from "./utils/helpers";
 
 class Exercise extends Component {
   state = {
     instruction: "",
-    examples: []
+    examples: [],
+    question: []
   };
 
   componentDidMount() {
     const instruction = exercises.past.instruction;
     const examples = exercises.past.examples;
+    const sampledQuestion = this.sampledQuestion();
 
     this.setState({
       instruction: instruction,
-      examples: examples
+      examples: examples,
+      question: sampledQuestion
     });
+  }
+
+  sampledQuestion() {
+    return [sample(pronouns), sample(verbs), sample(["O", "X", "?"])];
   }
 
   render() {
@@ -34,6 +43,9 @@ class Exercise extends Component {
             ))}
           </tbody>
         </table>
+        <div className="Exercise-question">
+          {this.state.question.map(e => <span key={e}>{e}</span>)}
+        </div>
       </Fragment>
     );
   }
