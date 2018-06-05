@@ -1,27 +1,64 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { matchPath } from "react-router";
 import { exercises } from "./exercises";
 import "./Exercise.css";
 import { pronouns, verbs } from "./words";
-import { sample, generateToken } from "./utils/helpers";
+import { sample } from "./utils/helpers";
+import io from "socket.io-client";
 
-class Exercise extends Component {
+class SharedExercise extends Component {
   state = {
     instruction: "",
     examples: [],
     question: []
   };
 
+  socket = io("http://localhost:4001");
+
   componentDidMount() {
     const instruction = exercises.past.instruction;
     const examples = exercises.past.examples;
     const sampledQuestion = this.sampledQuestion();
+    const token = this.token();
 
     this.setState({
       instruction: instruction,
       examples: examples,
       question: sampledQuestion
     });
+
+    this.socket.on("receive question", payload => {
+      this.setState({ question: payload.question });
+    });
+
+    this.socket.emit("share", { token: token });
+
+    this.socket.emit("question", {
+      question: sampledQuestion,
+      token: token
+    });
+  }
+
+  componentWillUnmount() {
+    const token = this.token();
+
+    this.socket.emit("unshare", {
+      token: token
+    });
+  }
+
+  token() {
+    const match = matchPath(window.location.pathname, {
+      path: "/shared/:token"
+    });
+
+    let token;
+
+    if (match && match.params.token) {
+      token = match.params.token;
+    }
+
+    return token;
   }
 
   sampledQuestion() {
@@ -30,15 +67,23 @@ class Exercise extends Component {
 
   handleNextQuestion() {
     const sampledQuestion = this.sampledQuestion();
+    const token = this.token();
+
+    this.socket.emit("question", {
+      question: sampledQuestion,
+      token: token
+    });
     this.setState({ question: sampledQuestion });
   }
+
+  handleCreateSharedScreen() {}
 
   render() {
     const Fragment = React.Fragment;
 
     return (
       <Fragment>
-        <Link to={`shared/${generateToken(8)}`}>Create Shared Screen</Link>
+        <p>Share: {window.location.href}</p>
         <div className="Exercise-instruction">{this.state.instruction}</div>
         <h4>Examples:</h4>
         <table className="Exercise-examples">
@@ -60,4 +105,4 @@ class Exercise extends Component {
   }
 }
 
-export default Exercise;
+export default SharedExercise;
