@@ -5,6 +5,7 @@ import "./Exercise.css";
 import { pronouns, verbs } from "./words";
 import { sample } from "./utils/helpers";
 import io from "socket.io-client";
+import Examples from "./Examples";
 
 class SharedExercise extends Component {
   state = {
@@ -85,17 +86,7 @@ class SharedExercise extends Component {
       <Fragment>
         <p>Share: {window.location.href}</p>
         <div className="Exercise-instruction">{this.state.instruction}</div>
-        <h4>Examples:</h4>
-        <table className="Exercise-examples">
-          <tbody>
-            {this.state.examples.map(example => (
-              <tr key={example.question.join("")}>
-                {example.question.map(e => <td key={e}>{e}</td>)}
-                <td>{example.solution}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Examples examples={this.state.examples} />
         <div className="Exercise-question">
           {this.state.question.map(e => <span key={e}>{e}</span>)}
         </div>
