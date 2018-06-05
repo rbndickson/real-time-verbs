@@ -2,9 +2,18 @@ export const exercises = {
   past: {
     instruction: "Make a past sentence.",
     examples: [
-      "He / play / O => He played soccer.",
-      "I / play / X => I didn't play tennis.",
-      "They / play / ? => Did they play baseball?"
+      {
+        question: ["He", "play", "O"],
+        solution: "He played soccer."
+      },
+      {
+        question: ["I", "play", "X"],
+        solution: "I didn't play tennis."
+      },
+      {
+        question: ["They", "play", "?"],
+        solution: "Did they play baseball?"
+      }
     ]
   }
 };
