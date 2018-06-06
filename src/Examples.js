@@ -12,6 +12,7 @@ const Examples = props => (
                 {e}
               </td>
             ))}
+            <td className="pr4">=></td>
             <td>{example.solution}</td>
           </tr>
         ))}
