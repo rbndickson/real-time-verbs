@@ -4,17 +4,23 @@ import { pronouns, verbs } from "./words";
 import { sample } from "./utils/helpers";
 import Examples from "./Examples";
 import Question from "./Question";
+import ExerciseForm from "./ExerciseForm";
+
+const types = ["O", "X", "?"];
 
 class Exercise extends Component {
   state = {
     instruction: "",
     examples: [],
-    question: []
+    question: [],
+    pronoun: "all",
+    verb: "all",
+    type: "all"
   };
 
   componentDidMount() {
     const { instruction, examples } = exercises.past;
-    const question = this.sampledQuestion();
+    const question = this.createQuestion();
 
     this.setState({
       instruction,
@@ -39,12 +45,16 @@ class Exercise extends Component {
     }
   }
 
-  sampledQuestion() {
-    return [sample(pronouns), sample(verbs), sample(["O", "X", "?"])];
+  createQuestion() {
+    const pronoun =
+      this.state.pronoun === "all" ? sample(pronouns) : this.state.pronoun;
+    const verb = this.state.verb === "all" ? sample(verbs) : this.state.verb;
+    const type = this.state.type === "all" ? sample(types) : this.state.type;
+    return [pronoun, verb, type];
   }
 
   handleNextQuestion() {
-    const question = this.sampledQuestion();
+    const question = this.createQuestion();
 
     // For sharing
     if (this.props.socket && this.props.token) {
@@ -57,10 +67,20 @@ class Exercise extends Component {
     this.setState({ question });
   }
 
+  handleOnChange(change) {
+    this.setState(change);
+  }
+
   render() {
     return (
       <div>
         <div className="f3 mt3">{this.state.instruction}</div>
+        <ExerciseForm
+          pronoun={this.state.pronoun}
+          verb={this.state.verb}
+          type={this.state.type}
+          handleOnChange={change => this.handleOnChange(change)}
+        />
         <Question question={this.state.question} />
         <div className="tc pt2 pb5">
           <button
