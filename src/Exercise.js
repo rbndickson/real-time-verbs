@@ -60,7 +60,6 @@ class Exercise extends Component {
     return (
       <div>
         <div className="f3 mt3">{this.state.instruction}</div>
-        <Examples examples={this.state.examples} />
         <div className="tc mt5 mb5">
           {this.state.question.map(e => (
             <span key={e} className="f1 mr4 ml4 pa3 bg-light-pink">
@@ -68,7 +67,7 @@ class Exercise extends Component {
             </span>
           ))}
         </div>
-        <div className="tc">
+        <div className="tc pt2 pb5">
           <button
             onClick={() => this.handleNextQuestion()}
             className="f6 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
@@ -76,6 +75,7 @@ class Exercise extends Component {
             Next Question
           </button>
         </div>
+        <Examples examples={this.state.examples} />
       </div>
     );
   }
