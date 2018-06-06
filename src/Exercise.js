@@ -3,6 +3,7 @@ import { exercises } from "./exercises";
 import { pronouns, verbs } from "./words";
 import { sample } from "./utils/helpers";
 import Examples from "./Examples";
+import Question from "./Question";
 
 class Exercise extends Component {
   state = {
@@ -60,13 +61,7 @@ class Exercise extends Component {
     return (
       <div>
         <div className="f3 mt3">{this.state.instruction}</div>
-        <div className="tc mt5 mb5">
-          {this.state.question.map(e => (
-            <span key={e} className="f1 mr4 ml4 pa3 bg-light-pink">
-              {e}
-            </span>
-          ))}
-        </div>
+        <Question question={this.state.question} />
         <div className="tc pt2 pb5">
           <button
             onClick={() => this.handleNextQuestion()}
