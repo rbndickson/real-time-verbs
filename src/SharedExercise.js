@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { matchPath } from "react-router";
 import io from "socket.io-client";
-import "./Exercise.css";
 import Exercise from "./Exercise";
 
 class SharedExercise extends Component {

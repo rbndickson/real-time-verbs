@@ -1,5 +1,4 @@
 import React from "react";
-import "./Examples.css";
 
 const Examples = props => (
   <React.Fragment>
@@ -8,7 +7,11 @@ const Examples = props => (
       <tbody>
         {props.examples.map(example => (
           <tr key={example.question.join("")}>
-            {example.question.map(e => <td key={e}>{e}</td>)}
+            {example.question.map(e => (
+              <td className="pr4" key={e}>
+                {e}
+              </td>
+            ))}
             <td>{example.solution}</td>
           </tr>
         ))}

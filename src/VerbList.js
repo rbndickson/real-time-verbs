@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./VerbList.css";
 import { verbs } from "./words";
 
 class VerbList extends Component {
@@ -13,9 +12,9 @@ class VerbList extends Component {
 
   render() {
     return (
-      <ol>
+      <ol className="w5 center">
         {this.state.verbs.map(verb => (
-          <li key={verb} className="VerbList-verb">
+          <li key={verb} className="f4 mb2">
             <span>{verb}</span>
           </li>
         ))}

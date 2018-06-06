@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { exercises } from "./exercises";
-import "./Exercise.css";
 import { pronouns, verbs } from "./words";
 import { sample } from "./utils/helpers";
 import Examples from "./Examples";
@@ -60,10 +59,14 @@ class Exercise extends Component {
   render() {
     return (
       <div>
-        <div className="Exercise-instruction">{this.state.instruction}</div>
+        <div className="f3 mt3">{this.state.instruction}</div>
         <Examples examples={this.state.examples} />
-        <div className="Exercise-question">
-          {this.state.question.map(e => <span key={e}>{e}</span>)}
+        <div className="tc mt5 mb5">
+          {this.state.question.map(e => (
+            <span key={e} className="f1 mr4 ml4 pa3 bg-light-pink">
+              {e}
+            </span>
+          ))}
         </div>
         <button onClick={() => this.handleNextQuestion()}>Next Question</button>
       </div>
