@@ -16,7 +16,8 @@ class Exercise extends Component {
     verbs: [],
     pronoun: "all",
     verb: "all",
-    type: "all"
+    type: "all",
+    showControls: false
   };
 
   componentDidMount() {
@@ -78,13 +79,32 @@ class Exercise extends Component {
     return (
       <div>
         <div className="f3 mt3">{this.state.instruction}</div>
-        <ExerciseForm
-          verbs={this.state.verbs}
-          pronoun={this.state.pronoun}
-          verb={this.state.verb}
-          type={this.state.type}
-          handleOnChange={change => this.handleOnChange(change)}
-        />
+        {this.state.showControls ? (
+          <button
+            onClick={() => this.setState({ showControls: false })}
+            className="dib f7 mt2 bn br3 ph2 pv1 white bg-blue bg-animate hover-bg-dark-blue pointer"
+          >
+            Controls
+          </button>
+        ) : (
+          <button
+            onClick={() => this.setState({ showControls: true })}
+            className="dib f7 mt2 bn br3 ph2 pv1 white bg-green bg-animate hover-bg-dark-green pointer"
+          >
+            Controls
+          </button>
+        )}
+        <div className="h1 tc">
+          {this.state.showControls && (
+            <ExerciseForm
+              verbs={this.state.verbs}
+              pronoun={this.state.pronoun}
+              verb={this.state.verb}
+              type={this.state.type}
+              handleOnChange={change => this.handleOnChange(change)}
+            />
+          )}
+        </div>
         <Question question={this.state.question} />
         <div className="tc pt2 pb5">
           <button
