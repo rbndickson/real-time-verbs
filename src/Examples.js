@@ -5,8 +5,11 @@ const Examples = props => (
     <h4>Examples:</h4>
     <table className="Examples">
       <tbody>
-        {props.examples.map(example => (
+        {props.examples.map((example, i) => (
           <tr key={example.question.join("")}>
+            <td className="pr4" key={i}>
+              {i + 1}.
+            </td>
             {example.question.map(e => (
               <td className="pr4" key={e}>
                 {e}
