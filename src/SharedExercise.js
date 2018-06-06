@@ -25,7 +25,14 @@ class SharedExercise extends Component {
   }
 
   render() {
-    return <Exercise socket={this.socket} token={this.token()} />;
+    return (
+      <div>
+        <p className="dark-green">
+          Share to practise together: {window.location.href}
+        </p>
+        <Exercise socket={this.socket} token={this.token()} />
+      </div>
+    );
   }
 }
 
