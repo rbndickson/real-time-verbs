@@ -1,5 +1,5 @@
 import React from "react";
-import { pronouns, verbs } from "./words";
+import { pronouns } from "./words";
 
 const types = ["O", "X", "?"];
 
@@ -23,7 +23,7 @@ const ExerciseForm = props => (
       }}
     >
       <option>all</option>
-      {verbs.map(verb => <option key={verb}>{verb}</option>)}
+      {props.verbs.map(verb => <option key={verb}>{verb}</option>)}
     </select>
     <select
       className="mh2"

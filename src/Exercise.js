@@ -13,19 +13,22 @@ class Exercise extends Component {
     instruction: "",
     examples: [],
     question: [],
+    verbs: [],
     pronoun: "all",
     verb: "all",
     type: "all"
   };
 
   componentDidMount() {
-    const { instruction, examples } = exercises.past;
-    const question = this.createQuestion();
+    const { instruction, examples, omitVerbs } = exercises.past;
+    const exerciseVerbs = verbs.filter(v => !omitVerbs.includes(v));
+    const question = this.createQuestion(exerciseVerbs);
 
     this.setState({
       instruction,
       examples,
-      question
+      question,
+      verbs: exerciseVerbs
     });
 
     // For sharing
@@ -45,7 +48,7 @@ class Exercise extends Component {
     }
   }
 
-  createQuestion() {
+  createQuestion(verbs = this.state.verbs) {
     const pronoun =
       this.state.pronoun === "all" ? sample(pronouns) : this.state.pronoun;
     const verb = this.state.verb === "all" ? sample(verbs) : this.state.verb;
@@ -76,6 +79,7 @@ class Exercise extends Component {
       <div>
         <div className="f3 mt3">{this.state.instruction}</div>
         <ExerciseForm
+          verbs={this.state.verbs}
           pronoun={this.state.pronoun}
           verb={this.state.verb}
           type={this.state.type}
