@@ -5,7 +5,7 @@ const Question = props => (
     <div key={props.question[0]} className="dib w-20 f1 mh3 pv2 bg-light-pink">
       {props.question[0]}
     </div>
-    <div key={props.question[1]} className="dib w-30 f1 mh3 pv2 bg-light-pink">
+    <div key={props.question[1]} className="dib w-40 f1 mh3 pv2 bg-light-pink">
       {props.question[1]}
     </div>
     <div key={props.question[2]} className="dib w-10 f1 mh3 pv2 bg-light-pink">
