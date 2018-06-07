@@ -108,16 +108,18 @@ class Exercise extends Component {
           )}
         </div>
         <Question question={this.state.question} />
-        {this.state.showControls && (
-          <div className="tc pt2 pb5">
-            <button
-              onClick={() => this.handleNextQuestion()}
-              className="f6 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
-            >
-              Next Question
-            </button>
-          </div>
-        )}
+        <div className="h2">
+          {this.state.showControls && (
+            <div className="tc">
+              <button
+                onClick={() => this.handleNextQuestion()}
+                className="f6 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
+              >
+                Next Question
+              </button>
+            </div>
+          )}
+        </div>
         <Examples examples={this.state.examples} />
       </div>
     );

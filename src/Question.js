@@ -1,7 +1,7 @@
 import React from "react";
 
 const Question = props => (
-  <div className="tc mt5 mb5">
+  <div className="tc mt5 mb4">
     <div key={props.question[0]} className="dib w-20 f1 mh3 pv2 bg-light-pink">
       {props.question[0]}
     </div>

@@ -4,7 +4,7 @@ import { pronouns } from "./words";
 const types = ["O", "X", "?"];
 
 const ExerciseForm = props => (
-  <form className="pt3">
+  <form className="h3 pt3">
     <select
       className="mh2"
       value={props.pronoun}
