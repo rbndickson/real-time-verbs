@@ -14,7 +14,9 @@ export const exercises = {
       "should",
       "must",
       "might",
-      "going"
+      "going",
+      "let_'s",
+      "in"
     ]
   }
 };
