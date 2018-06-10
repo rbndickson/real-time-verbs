@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { exercises } from "./exercises";
 import { pronouns, verbs } from "./words";
 import { sample } from "./utils/helpers";
+import Instruction from "./Instruction";
 import Examples from "./Examples";
 import Question from "./Question";
 import ExerciseForm from "./ExerciseForm";
@@ -91,7 +92,7 @@ class Exercise extends Component {
   render() {
     return (
       <div>
-        <div className="f3 mt3">{this.state.instruction}</div>
+        <Instruction text={this.state.instruction} />
         {this.state.showControls ? (
           <button
             onClick={() => this.setState({ showControls: false })}
