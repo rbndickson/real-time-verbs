@@ -22,7 +22,7 @@ const ExerciseForm = props => (
         props.handleOnChange({ verb: e.target.value });
       }}
     >
-      <option>all</option>
+      <option>beginner</option>
       {props.verbs.map(verb => <option key={verb}>{verb}</option>)}
     </select>
     <select
