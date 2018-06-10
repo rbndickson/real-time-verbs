@@ -11,7 +11,7 @@ class Practise extends Component {
       <Fragment>
         <Link
           to={`shared/${generateToken(8)}`}
-          className="dib link f6 mt2 br3 ph2 pv1 white bg-green bg-animate hover-bg-dark-green pointer"
+          className="dib link f6 mv3 br3 ph2 pv1 white bg-green bg-animate hover-bg-dark-green pointer"
         >
           Create Shared Practise
         </Link>

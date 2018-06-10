@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { exercises } from "./exercises";
 import { pronouns, verbs } from "./words";
 import { sample } from "./utils/helpers";
-import Instruction from "./Instruction";
+import Highlightable from "./Highlightable";
 import Examples from "./Examples";
 import Question from "./Question";
 import ExerciseForm from "./ExerciseForm";
@@ -92,21 +92,30 @@ class Exercise extends Component {
   render() {
     return (
       <div>
-        <Instruction
-          text={this.state.instruction}
+        <Highlightable
+          children={<div className="f3">{this.state.instruction}</div>}
           socket={this.props.socket}
           token={this.props.token}
+          id={"instruction"}
         />
         {this.state.showControls ? (
           <button
-            onClick={() => this.setState({ showControls: false })}
+            onClick={() =>
+              this.setState({
+                showControls: false
+              })
+            }
             className="dib f7 mt2 bn br3 ph2 pv1 white bg-blue bg-animate hover-bg-dark-blue pointer"
           >
             Controls
           </button>
         ) : (
           <button
-            onClick={() => this.setState({ showControls: true })}
+            onClick={() =>
+              this.setState({
+                showControls: true
+              })
+            }
             className="dib f7 mt2 bn br3 ph2 pv1 white bg-green bg-animate hover-bg-dark-green pointer"
           >
             Controls
@@ -136,7 +145,11 @@ class Exercise extends Component {
             </div>
           )}
         </div>
-        <Examples examples={this.state.examples} />
+        <Examples
+          examples={this.state.examples}
+          socket={this.props.socket}
+          token={this.props.token}
+        />
       </div>
     );
   }
