@@ -92,7 +92,11 @@ class Exercise extends Component {
   render() {
     return (
       <div>
-        <Instruction text={this.state.instruction} />
+        <Instruction
+          text={this.state.instruction}
+          socket={this.props.socket}
+          token={this.props.token}
+        />
         {this.state.showControls ? (
           <button
             onClick={() => this.setState({ showControls: false })}

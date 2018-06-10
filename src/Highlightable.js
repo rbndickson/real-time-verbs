@@ -2,12 +2,41 @@ import React, { Component } from "react";
 
 class Highlightable extends Component {
   state = {
-    highlighted: false
+    id: "instruction",
+    isHighlighted: false
   };
 
+  componentDidMount() {
+    // For sharing
+    if (this.isSharedExercise()) {
+      this.props.socket.on("receive highlight", payload => {
+        if (payload.id === this.state.id) {
+          this.setState(function(state, props) {
+            return { isHighlighted: payload.isHighlighted };
+          });
+        }
+      });
+    }
+  }
+
+  isSharedExercise() {
+    return this.props.socket && this.props.token;
+  }
+
   handleClick() {
+    const isHighlighted = this.state.isHighlighted ? false : true;
+
+    // For sharing
+    if (this.isSharedExercise()) {
+      this.props.socket.emit("toggle highlighted", {
+        isHighlighted,
+        token: this.props.token,
+        id: this.state.id
+      });
+    }
+
     this.setState(function(state, props) {
-      return { highlighted: this.state.highlighted ? false : true };
+      return { isHighlighted };
     });
   }
 
@@ -15,7 +44,7 @@ class Highlightable extends Component {
     return (
       <div
         className={`pa1 br2 f3 mt3 pointer ${
-          this.state.highlighted ? "bg-yellow" : ""
+          this.state.isHighlighted ? "bg-yellow" : ""
         }`}
         onClick={() => this.handleClick()}
       >
