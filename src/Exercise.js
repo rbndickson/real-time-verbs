@@ -54,9 +54,13 @@ class Exercise extends Component {
 
   createQuestion(verbs = this.state.verbs) {
     let verb;
-
+    const exercisePronouns = pronouns.filter(
+      e => !exercises.past.omitPronouns.includes(e)
+    );
     const pronoun =
-      this.state.pronoun === "all" ? sample(pronouns) : this.state.pronoun;
+      this.state.pronoun === "all"
+        ? sample(exercisePronouns)
+        : this.state.pronoun;
 
     this.state.verb === "beginner"
       ? (verb = sample(verbs.beginner))

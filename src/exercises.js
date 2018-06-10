@@ -6,6 +6,7 @@ export const exercises = {
       { question: ["I", "play", "X"], solution: "I didn't play tennis." },
       { question: ["They", "play", "?"], solution: "Did they play baseball?" }
     ],
+    omitPronouns: ["it"],
     omitVerbs: [
       "will",
       "would",
