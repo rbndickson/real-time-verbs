@@ -93,11 +93,14 @@ class Exercise extends Component {
     return (
       <div>
         <Highlightable
-          children={<div className="f3">{this.state.instruction}</div>}
+          type="div"
+          className="f3"
           socket={this.props.socket}
           token={this.props.token}
           id={"instruction"}
-        />
+        >
+          {this.state.instruction}
+        </Highlightable>
         {this.state.showControls ? (
           <button
             onClick={() =>

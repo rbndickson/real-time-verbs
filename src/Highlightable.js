@@ -40,16 +40,18 @@ class Highlightable extends Component {
   }
 
   render() {
-    return (
-      <div
-        className={`pa1 br2 pointer ${
-          this.state.isHighlighted ? "bg-yellow" : ""
-        }`}
-        onClick={() => this.handleClick()}
-      >
-        {this.props.children}
-      </div>
-    );
+    let highlightClasses = ` pa1 br2 pointer ${
+      this.state.isHighlighted ? "bg-yellow" : ""
+    }`;
+
+    highlightClasses = this.props.className + highlightClasses;
+
+    const props = {
+      className: highlightClasses,
+      onClick: () => this.handleClick()
+    };
+
+    return React.createElement(this.props.type, props, this.props.children);
   }
 }
 
