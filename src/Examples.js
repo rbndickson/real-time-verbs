@@ -1,4 +1,5 @@
 import React from "react";
+import { typeToEmoji } from "./utils/helpers";
 import Highlightable from "./Highlightable";
 
 const TableData = props => (
@@ -30,15 +31,19 @@ const Examples = props => (
                 token={props.token}
                 id={`${i}`}
               />
-              {example.question.map(e => (
-                <TableData
-                  key={e}
-                  data={e}
-                  socket={props.socket}
-                  token={props.token}
-                  id={i + e}
-                />
-              ))}
+              {example.question.map(e => {
+                const data = typeToEmoji(e) ? typeToEmoji(e) : e;
+
+                return (
+                  <TableData
+                    key={e}
+                    data={data}
+                    socket={props.socket}
+                    token={props.token}
+                    id={i + e}
+                  />
+                );
+              })}
               <TableData data="=>" />
               <TableData
                 data={example.solution}
