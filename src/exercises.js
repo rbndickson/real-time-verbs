@@ -17,7 +17,8 @@ export const exercises = {
       "might",
       "going",
       "let_'s",
-      "in"
+      "in",
+      "ought"
     ]
   }
 };
