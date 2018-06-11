@@ -1,4 +1,5 @@
 import React from "react";
+import { typeToEmoji } from "./utils/helpers";
 
 const Question = props => (
   <div className="tc mt5 mb4">
@@ -9,7 +10,7 @@ const Question = props => (
       {props.question[1]}
     </div>
     <div key={props.question[2]} className="dib w-10 f1 mh3 pv2 bg-light-pink">
-      {props.question[2]}
+      {typeToEmoji(props.question[2])}
     </div>
   </div>
 );
