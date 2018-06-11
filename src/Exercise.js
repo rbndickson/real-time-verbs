@@ -24,7 +24,11 @@ class Exercise extends Component {
   componentDidMount() {
     const { instruction, examples } = exercises.past;
 
-    const exerciseVerbs = verbs;
+    let exerciseVerbs = verbs;
+    exerciseVerbs.common1000 = exerciseVerbs.common1000.filter(
+      e => !exercises.past.omitVerbs.includes(e)
+    );
+
     const question = this.createQuestion(exerciseVerbs);
 
     this.setState({
@@ -63,9 +67,15 @@ class Exercise extends Component {
         ? sample(exercisePronouns)
         : this.state.pronoun;
 
-    this.state.verb === "beginner"
-      ? (verb = sample(verbs.beginner))
-      : (verb = this.state.verb);
+    if (this.state.verb === "beginner") {
+      verb = sample(verbs.beginner);
+    } else if (this.state.verb === "common 200") {
+      verb = sample(verbs.common1000.slice(0, 200));
+    } else if (this.state.verb === "common 500") {
+      verb = sample(verbs.common1000.slice(0, 500));
+    } else {
+      verb = this.state.verb;
+    }
 
     const type = this.state.type === "all" ? sample(types) : this.state.type;
     return [pronoun, verb, type];

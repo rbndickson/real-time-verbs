@@ -24,6 +24,8 @@ const ExerciseForm = props => (
     >
       <option>beginner</option>
       {props.verbs.map(verb => <option key={verb}>{verb}</option>)}
+      <option>common 200</option>
+      <option>common 500</option>
     </select>
     <select
       className="mh2"
