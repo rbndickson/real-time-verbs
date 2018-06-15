@@ -63,5 +63,50 @@ export const exercises = {
       "in",
       "ought"
     ]
+  },
+  presentContinuous: {
+    instruction: "Make a present continuous tense sentence.",
+    example: [
+      { question: ["I", "play", "O"], solution: "I'm playing soccer." },
+      {
+        question: ["He/She/It", "play", "O"],
+        solution: "He's playing tennis."
+      },
+      {
+        question: ["We/They/You", "play", "O"],
+        solution: "We/They/You are playing basketball."
+      },
+      { question: ["I", "play", "X"], solution: "I'm not playing ~." },
+      {
+        question: ["He/She/It", "play", "X"],
+        solution: "He/She/It isn't playing ~."
+      },
+      {
+        question: ["We/They/You", "play", "X"],
+        solution: "We/They/You aren't playing ~."
+      },
+      {
+        question: ["He/She/It", "play", "?"],
+        solution: "Is he/she/it playing ~ ?"
+      },
+      {
+        question: ["They/You", "play", "?"],
+        solution: "Are they/you playing ~ ?"
+      }
+    ],
+    omitPronouns: [],
+    omitVerbs: [
+      "will",
+      "would",
+      "could",
+      "may",
+      "should",
+      "must",
+      "might",
+      "going",
+      "let_'s",
+      "in",
+      "ought"
+    ]
   }
 };
