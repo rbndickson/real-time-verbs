@@ -13,3 +13,7 @@ export const generateToken = tokenLength => {
 export const typeToEmoji = type => {
   return { O: "⭕", X: "❌", "?": "❓" }[type];
 };
+
+export const getToken = () => {
+  return window.location.pathname.substr(7);
+};
