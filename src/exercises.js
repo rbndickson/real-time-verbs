@@ -18,7 +18,8 @@ export const exercises = {
       "going",
       "let_'s",
       "in",
-      "ought"
+      "ought",
+      "born"
     ]
   },
   presentSimple: {
@@ -60,7 +61,8 @@ export const exercises = {
       "going",
       "let_'s",
       "in",
-      "ought"
+      "ought",
+      "born"
     ]
   },
   presentContinuous: {
@@ -105,7 +107,8 @@ export const exercises = {
       "going",
       "let_'s",
       "in",
-      "ought"
+      "ought",
+      "born"
     ]
   }
 };
