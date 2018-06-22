@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { getToken } from "./utils/helpers";
 
 class Highlightable extends Component {
   state = {
@@ -19,7 +20,7 @@ class Highlightable extends Component {
   }
 
   isSharedExercise() {
-    return this.props.socket && this.props.token;
+    return this.props.socket;
   }
 
   handleClick() {
@@ -29,7 +30,7 @@ class Highlightable extends Component {
     if (this.isSharedExercise()) {
       this.props.socket.emit("toggle highlighted", {
         isHighlighted,
-        token: this.props.token,
+        token: getToken(),
         id: this.props.id
       });
     }

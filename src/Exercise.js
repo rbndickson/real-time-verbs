@@ -145,11 +145,7 @@ class Exercise extends Component {
             />
           )}
         </div>
-        <Question
-          question={this.state.question}
-          socket={this.props.socket}
-          token={this.props.token}
-        />
+        <Question question={this.state.question} socket={this.props.socket} />
         <div className="h2">
           {this.state.showControls && (
             <div className="tc">
@@ -162,11 +158,7 @@ class Exercise extends Component {
             </div>
           )}
         </div>
-        <Examples
-          examples={this.state.examples}
-          socket={this.props.socket}
-          token={this.props.token}
-        />
+        <Examples examples={this.state.examples} socket={this.props.socket} />
       </div>
     );
   }

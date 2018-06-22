@@ -3,13 +3,7 @@ import { typeToEmoji } from "./utils/helpers";
 import Highlightable from "./Highlightable";
 
 const TableData = props => (
-  <Highlightable
-    type="td"
-    className="pr4"
-    socket={props.socket}
-    token={props.token}
-    id={props.id}
-  >
+  <Highlightable type="td" className="pr4" socket={props.socket} id={props.id}>
     {props.data}
   </Highlightable>
 );
@@ -28,7 +22,6 @@ const Examples = props => (
                 key={i}
                 data={`${i + 1}.`}
                 socket={props.socket}
-                token={props.token}
                 id={`${i}`}
               />
               {example.question.map(e => {
@@ -39,7 +32,6 @@ const Examples = props => (
                     key={e}
                     data={data}
                     socket={props.socket}
-                    token={props.token}
                     id={i + e}
                   />
                 );
@@ -48,7 +40,6 @@ const Examples = props => (
               <TableData
                 data={example.solution}
                 socket={props.socket}
-                token={props.token}
                 id={example.solution}
               />
             </tr>
