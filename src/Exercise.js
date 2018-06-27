@@ -55,6 +55,12 @@ class Exercise extends Component {
 
       this.setState({ showControls: false });
     }
+
+    document.addEventListener("keydown", this.handleKeyDown.bind(this));
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyDown.bind(this));
   }
 
   createQuestion(verbs = this.state.verbs) {
@@ -99,6 +105,14 @@ class Exercise extends Component {
     this.setState(change);
   }
 
+  handleKeyDown(e) {
+    if (e.keyCode === 67) {
+      this.setState(prevState => ({
+        showControls: !prevState.showControls
+      }));
+    }
+  }
+
   render() {
     return (
       <div>
@@ -111,18 +125,6 @@ class Exercise extends Component {
         >
           {this.state.instruction}
         </Highlightable>
-        <button
-          onClick={() =>
-            this.setState({
-              showControls: !this.state.showControls
-            })
-          }
-          className={`dib f7 mt2 bn br3 ph2 pv1 white bg-blue bg-animate hover-bg-dark-${
-            this.state.showControls ? "blue" : "green"
-          } pointer`}
-        >
-          Controls
-        </button>
         <div className="h1 tc">
           {this.state.showControls && (
             <ExerciseForm
