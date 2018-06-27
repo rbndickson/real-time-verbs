@@ -111,29 +111,18 @@ class Exercise extends Component {
         >
           {this.state.instruction}
         </Highlightable>
-        {this.state.showControls ? (
-          <button
-            onClick={() =>
-              this.setState({
-                showControls: false
-              })
-            }
-            className="dib f7 mt2 bn br3 ph2 pv1 white bg-blue bg-animate hover-bg-dark-blue pointer"
-          >
-            Controls
-          </button>
-        ) : (
-          <button
-            onClick={() =>
-              this.setState({
-                showControls: true
-              })
-            }
-            className="dib f7 mt2 bn br3 ph2 pv1 white bg-green bg-animate hover-bg-dark-green pointer"
-          >
-            Controls
-          </button>
-        )}
+        <button
+          onClick={() =>
+            this.setState({
+              showControls: !this.state.showControls
+            })
+          }
+          className={`dib f7 mt2 bn br3 ph2 pv1 white bg-blue bg-animate hover-bg-dark-${
+            this.state.showControls ? "blue" : "green"
+          } pointer`}
+        >
+          Controls
+        </button>
         <div className="h1 tc">
           {this.state.showControls && (
             <ExerciseForm
