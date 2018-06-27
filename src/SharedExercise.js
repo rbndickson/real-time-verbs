@@ -14,10 +14,7 @@ class SharedExercise extends Component {
 
   render() {
     return (
-      <div>
-        <p className="dark-green">
-          Share to practise together: {window.location.href}
-        </p>
+      <div className="mt4">
         <Exercise socket={this.socket} token={getToken()} />
       </div>
     );
