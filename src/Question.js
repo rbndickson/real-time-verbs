@@ -9,21 +9,21 @@ const Question = props => (
       id="questionPronoun"
       className="dib w-20 f1 mh3 pv2 bg-light-pink"
     >
-      <span>{props.question[0]}</span>
+      <span>{props.question.pronoun}</span>
     </Hideable>
     <Hideable
       socket={props.socket}
       id="questionVerb"
       className="dib w-40 f1 mh3 pv2 bg-light-pink"
     >
-      <span>{props.question[1]}</span>
+      <span>{props.question.verb.base}</span>
     </Hideable>
     <Hideable
       socket={props.socket}
       id="questionType"
       className="dib w-10 f1 mh3 pv2 bg-light-pink"
     >
-      <div>{typeToEmoji(props.question[2])}</div>
+      <div>{typeToEmoji(props.question.type)}</div>
     </Hideable>
   </div>
 );

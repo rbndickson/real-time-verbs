@@ -17,13 +17,15 @@ const ExerciseForm = props => (
     </select>
     <select
       className="mh2"
-      value={props.verb}
+      value={props.verb.base || props.verb}
       onChange={e => {
         props.handleOnChange({ verb: e.target.value });
       }}
     >
       <option>beginner</option>
-      {props.verbs.map(verb => <option key={verb}>{verb}</option>)}
+      {props.beginnerVerbs.map(verb => (
+        <option key={verb.base}>{verb.base}</option>
+      ))}
       <option>common 200</option>
       <option>common 500</option>
     </select>

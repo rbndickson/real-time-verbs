@@ -13,7 +13,7 @@ class Exercise extends Component {
   state = {
     instruction: "",
     examples: [],
-    question: [],
+    question: { pronoun: "", verb: { base: "", pastTense: "" }, type: "" },
     verbs: { beginner: [] },
     pronoun: "all",
     verb: "beginner",
@@ -76,15 +76,15 @@ class Exercise extends Component {
     if (this.state.verb === "beginner") {
       verb = sample(verbs.beginner);
     } else if (this.state.verb === "common 200") {
-      verb = sample(verbs.common1000.slice(0, 200));
+      verb = { base: sample(verbs.common1000.slice(0, 200)), pastTense: "" };
     } else if (this.state.verb === "common 500") {
-      verb = sample(verbs.common1000.slice(0, 500));
+      verb = { base: sample(verbs.common1000.slice(0, 500)), pastTense: "" };
     } else {
       verb = this.state.verb;
     }
 
     const type = this.state.type === "all" ? sample(types) : this.state.type;
-    return [pronoun, verb, type];
+    return { pronoun, verb, type };
   }
 
   handleNextQuestion() {
@@ -102,7 +102,15 @@ class Exercise extends Component {
   }
 
   handleOnChange(change) {
-    this.setState(change);
+    if (
+      change.verb &&
+      !["beginner", "common 500", "common 1000"].includes(change.verb)
+    ) {
+      const v = this.state.verbs.beginner.find(e => e.base === change.verb);
+      this.setState({ verb: v });
+    } else {
+      this.setState(change);
+    }
   }
 
   handleKeyDown(e) {
@@ -128,7 +136,7 @@ class Exercise extends Component {
         <div className="h1 tc">
           {this.state.showControls && (
             <ExerciseForm
-              verbs={this.state.verbs.beginner}
+              beginnerVerbs={this.state.verbs.beginner}
               pronoun={this.state.pronoun}
               verb={this.state.verb}
               type={this.state.type}
