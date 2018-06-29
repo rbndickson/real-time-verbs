@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { exercises } from "./exercises";
 import { pronouns, verbs } from "./words";
-import { sample } from "./utils/helpers";
+import { sample, capitalize } from "./utils/helpers";
 import Highlightable from "./Highlightable";
 import Examples from "./Examples";
 import Question from "./Question";
@@ -121,6 +121,23 @@ class Exercise extends Component {
     }
   }
 
+  answer() {
+    if (this.state.question.type === "O") {
+      return `${capitalize(this.state.question.pronoun)} ${
+        this.state.question.verb.pastTense
+      } ~`;
+    }
+    if (this.state.question.type === "X") {
+      return `${capitalize(this.state.question.pronoun)} didn't ${
+        this.state.question.verb.base
+      } ~`;
+    } else {
+      return `Did ${this.state.question.pronoun} ${
+        this.state.question.verb.base
+      } ~ ?`;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -145,6 +162,9 @@ class Exercise extends Component {
           )}
         </div>
         <Question question={this.state.question} socket={this.props.socket} />
+        <div className="f4 h1 tc mb4">
+          <div>{this.answer()}</div>
+        </div>
         <div className="h2 tc">
           {this.state.showControls && (
             <button
