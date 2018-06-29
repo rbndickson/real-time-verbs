@@ -118,14 +118,16 @@ class Exercise extends Component {
   }
 
   handleOnChange(change) {
+    console.log(change);
+
     if (
       change.verb &&
-      !["beginner", "common 500", "common 1000"].includes(change.verb)
+      !["beginner", "common 200", "common 500"].includes(change.verb)
     ) {
       const v = this.state.verbs.beginner.find(e => e.base === change.verb);
       this.setState({ verb: v });
     } else {
-      this.setState(change);
+      this.setState({ verb: change.verb });
     }
   }
 
