@@ -18,7 +18,8 @@ class Exercise extends Component {
     pronoun: "all",
     verb: "beginner",
     type: "all",
-    showControls: true
+    showControls: true,
+    showAnswer: false
   };
 
   componentDidMount() {
@@ -98,7 +99,11 @@ class Exercise extends Component {
       });
     }
 
-    this.setState({ question });
+    this.setState({ question, showAnswer: false });
+  }
+
+  handleShowAnswer() {
+    this.setState({ showAnswer: true });
   }
 
   handleOnChange(change) {
@@ -163,7 +168,7 @@ class Exercise extends Component {
         </div>
         <Question question={this.state.question} socket={this.props.socket} />
         <div className="f4 h1 tc mb4">
-          <div>{this.answer()}</div>
+          {this.state.showAnswer && <div>{this.answer()}</div>}
         </div>
         <div className="h2 tc">
           {this.state.showControls && (
@@ -172,6 +177,14 @@ class Exercise extends Component {
               className="f6 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
             >
               Next Question
+            </button>
+          )}
+          {this.state.showControls && (
+            <button
+              onClick={() => this.handleShowAnswer()}
+              className="f6 bn br3 ph3 pv2 mt2 ml1 purple bg-yellow grow pointer"
+            >
+              Show Answer
             </button>
           )}
         </div>
