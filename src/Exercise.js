@@ -44,7 +44,11 @@ class Exercise extends Component {
       const token = this.props.token;
 
       this.props.socket.on("receive question", payload => {
-        this.setState({ question: payload.question });
+        this.setState({ question: payload.question, showAnswer: false });
+      });
+
+      this.props.socket.on("receive show answer", payload => {
+        this.setState({ showAnswer: true });
       });
 
       this.props.socket.emit("share", { token });
@@ -103,6 +107,13 @@ class Exercise extends Component {
   }
 
   handleShowAnswer() {
+    // For sharing
+    if (this.props.socket && this.props.token) {
+      this.props.socket.emit("show answer", {
+        token: this.props.token
+      });
+    }
+
     this.setState({ showAnswer: true });
   }
 
