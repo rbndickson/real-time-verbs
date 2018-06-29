@@ -23,10 +23,10 @@ const ExerciseForm = props => (
       }}
     >
       <option>beginner</option>
+      <option>common 200</option>
       {props.beginnerVerbs.map(verb => (
         <option key={verb.base}>{verb.base}</option>
       ))}
-      <option>common 200</option>
       <option>common 500</option>
     </select>
     <select

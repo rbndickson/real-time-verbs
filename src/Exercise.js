@@ -27,7 +27,11 @@ class Exercise extends Component {
 
     let exerciseVerbs = verbs;
     exerciseVerbs.common1000 = exerciseVerbs.common1000.filter(
-      e => !exercises.past.omitVerbs.includes(e)
+      e =>
+        !(
+          exercises.past.omitVerbs.includes(e) ||
+          exercises.past.omitVerbs.includes(e.base)
+        )
     );
 
     const question = this.createQuestion(exerciseVerbs);
@@ -81,9 +85,9 @@ class Exercise extends Component {
     if (this.state.verb === "beginner") {
       verb = sample(verbs.beginner);
     } else if (this.state.verb === "common 200") {
-      verb = { base: sample(verbs.common1000.slice(0, 200)), pastTense: "" };
+      verb = sample(verbs.common1000.slice(0, 200));
     } else if (this.state.verb === "common 500") {
-      verb = { base: sample(verbs.common1000.slice(0, 500)), pastTense: "" };
+      verb = { base: sample(verbs.common1000.slice(231, 500)), pastTense: "" };
     } else {
       verb = this.state.verb;
     }
@@ -118,8 +122,6 @@ class Exercise extends Component {
   }
 
   handleOnChange(change) {
-    console.log(change);
-
     if (
       change.verb &&
       !["beginner", "common 200", "common 500"].includes(change.verb)
@@ -127,7 +129,7 @@ class Exercise extends Component {
       const v = this.state.verbs.beginner.find(e => e.base === change.verb);
       this.setState({ verb: v });
     } else {
-      this.setState({ verb: change.verb });
+      this.setState(change);
     }
   }
 
