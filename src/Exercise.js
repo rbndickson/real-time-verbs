@@ -145,16 +145,14 @@ class Exercise extends Component {
           )}
         </div>
         <Question question={this.state.question} socket={this.props.socket} />
-        <div className="h2">
+        <div className="h2 tc">
           {this.state.showControls && (
-            <div className="tc">
-              <button
-                onClick={() => this.handleNextQuestion()}
-                className="f6 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
-              >
-                Next Question
-              </button>
-            </div>
+            <button
+              onClick={() => this.handleNextQuestion()}
+              className="f6 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
+            >
+              Next Question
+            </button>
           )}
         </div>
         <Examples examples={this.state.examples} socket={this.props.socket} />
