@@ -21,7 +21,8 @@ export const exercises = {
       "ought",
       "born",
       "shall",
-      "used"
+      "used",
+      "mind"
     ]
   },
   presentSimple: {
