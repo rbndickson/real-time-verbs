@@ -18,6 +18,12 @@ class App extends Component {
           <Route path="/shared/:token" component={SharedExercise} />
           <Route exact path="/" component={Practise} />
         </main>
+        <div className="tc moon-gray">
+          Made by{" "}
+          <a href="http://rbndickson.tech" className="light-blue">
+            rbn
+          </a>
+        </div>
       </div>
     );
   }
