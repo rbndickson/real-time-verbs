@@ -4,9 +4,9 @@ import io from "socket.io-client";
 import Exercise from "./Exercise";
 
 class SharedExercise extends Component {
-  // socket = io("https://verb-challenge-server.herokuapp.com");
+  socket = io("https://verb-challenge-server.herokuapp.com");
   // In development
-  socket = io("http://localhost:4001");
+  // socket = io("http://localhost:4001");
 
   componentWillUnmount() {
     this.socket.emit("unshare", { token: getToken() });
