@@ -197,7 +197,7 @@ class Exercise extends Component {
           {this.state.showControls && (
             <button
               onClick={() => this.handleShowAnswer()}
-              className="f4 bn br3 ph3 pv2 mt2 ml2 purple bg-yellow grow pointer"
+              className="f4 bn br3 ph3 pv2 mt2 ml2 white bg-blue grow pointer"
             >
               Show Answer
             </button>
