@@ -163,7 +163,7 @@ class Exercise extends Component {
       <div>
         <Highlightable
           type="div"
-          className="f3"
+          className="f3-ns f4"
           socket={this.props.socket}
           token={this.props.token}
           id={"instruction"}
@@ -189,7 +189,7 @@ class Exercise extends Component {
           {this.state.showControls && (
             <button
               onClick={() => this.handleNextQuestion()}
-              className="f4 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
+              className="f4-ns f5 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
             >
               Next Question
             </button>
@@ -197,7 +197,7 @@ class Exercise extends Component {
           {this.state.showControls && (
             <button
               onClick={() => this.handleShowAnswer()}
-              className="f4 bn br3 ph3 pv2 mt2 ml2 white bg-blue grow pointer"
+              className="f4-ns f5 bn br3 ph3 pv2 mt2 ml2 white bg-blue grow pointer"
             >
               Show Answer
             </button>

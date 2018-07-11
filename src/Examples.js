@@ -3,7 +3,12 @@ import { typeToEmoji } from "./utils/helpers";
 import Highlightable from "./Highlightable";
 
 const TableData = props => (
-  <Highlightable type="td" className="pr4" socket={props.socket} id={props.id}>
+  <Highlightable
+    type="td"
+    className="pr4-ns pr1"
+    socket={props.socket}
+    id={props.id}
+  >
     {props.data}
   </Highlightable>
 );
