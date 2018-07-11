@@ -189,7 +189,7 @@ class Exercise extends Component {
           {this.state.showControls && (
             <button
               onClick={() => this.handleNextQuestion()}
-              className="f6 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
+              className="f4 bn br3 ph3 pv2 mb2 white bg-purple grow pointer"
             >
               Next Question
             </button>
@@ -197,7 +197,7 @@ class Exercise extends Component {
           {this.state.showControls && (
             <button
               onClick={() => this.handleShowAnswer()}
-              className="f6 bn br3 ph3 pv2 mt2 ml1 purple bg-yellow grow pointer"
+              className="f4 bn br3 ph3 pv2 mt2 ml2 purple bg-yellow grow pointer"
             >
               Show Answer
             </button>
