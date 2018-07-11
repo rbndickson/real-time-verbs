@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
-import InfoModal from "./InfoModal";
+import InfoBar from "./InfoBar";
 import InfoIcon from "./InfoIcon";
 import VerbList from "./VerbList";
 import Practise from "./Practise";
@@ -30,7 +30,7 @@ class App extends Component {
         </header>
         <main className="mw7 center">
           {this.state.isInfoMode && (
-            <InfoModal closeInfo={() => this.closeInfo()} />
+            <InfoBar closeInfo={() => this.closeInfo()} />
           )}
           <Route exact path="/data/verbs" component={VerbList} />
           <Route path="/shared/:token" component={SharedExercise} />

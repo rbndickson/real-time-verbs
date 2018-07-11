@@ -1,7 +1,7 @@
 import React from "react";
 
-const InfoModal = props => (
-  <div className="fixed top-0 right-0 bottom-0 z-5 mw-3 h-50 pa3 mt5 bg-light-blue">
+const InfoBar = props => (
+  <div className="w-100 pa3 bg-light-blue">
     <h4>For 2+ people:</h4>
     <div>
       <p>Click 'Create Shared Practise' button</p>
@@ -15,4 +15,4 @@ const InfoModal = props => (
   </div>
 );
 
-export default InfoModal;
+export default InfoBar;
