@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
-import InfoBar from "./InfoBar";
+import Modal from "./Modal";
+import Info from "./Info";
 import InfoIcon from "./InfoIcon";
 import VerbList from "./VerbList";
 import Practise from "./Practise";
@@ -11,27 +12,31 @@ class App extends Component {
     isInfoMode: false
   };
 
-  toggleInfo() {
-    this.setState(prevState => ({
-      isInfoMode: !prevState.isInfoMode
-    }));
+  openModal() {
+    this.setState({ isInfoMode: true });
+  }
+
+  closeModal() {
+    this.setState({ isInfoMode: false });
   }
 
   render() {
     return (
       <div>
+        {this.state.isInfoMode && (
+          <Modal closeModal={() => this.closeModal()}>
+            <Info />
+          </Modal>
+        )}
         <header className="h3 bg-blue tc pt3">
           <Link to="/" className="f2 white no-underline">
             Verbs Challenge
           </Link>
-          <div className="fr mr3" onClick={() => this.toggleInfo()}>
+          <div className="fr mr3" onClick={() => this.openModal()}>
             <InfoIcon />
           </div>
         </header>
         <main className="mw7 center">
-          {this.state.isInfoMode && (
-            <InfoBar closeInfo={() => this.closeInfo()} />
-          )}
           <Route exact path="/data/verbs" component={VerbList} />
           <Route path="/shared/:token" component={SharedExercise} />
           <Route exact path="/" component={Practise} />
