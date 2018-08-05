@@ -32,7 +32,7 @@ class App extends Component {
             Verbs Challenge
           </Link>
           <div className="fr mr3" onClick={() => this.openModal()}>
-            <i class="f2 fas fa-info-circle white pointer" />
+            <i className="f2 fas fa-info-circle white pointer" />
           </div>
         </header>
         <main className="mw7 center">
