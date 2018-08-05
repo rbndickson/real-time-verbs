@@ -64,12 +64,6 @@ class Exercise extends Component {
 
       this.setState({ showControls: false });
     }
-
-    document.addEventListener("keydown", this.handleKeyDown.bind(this));
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyDown.bind(this));
   }
 
   createQuestion(verbs = this.state.verbs) {
@@ -133,12 +127,10 @@ class Exercise extends Component {
     }
   }
 
-  handleKeyDown(e) {
-    if (e.keyCode === 67) {
-      this.setState(prevState => ({
-        showControls: !prevState.showControls
-      }));
-    }
+  handleToggleControls() {
+    this.setState(prevState => ({
+      showControls: !prevState.showControls
+    }));
   }
 
   answer() {
@@ -185,7 +177,7 @@ class Exercise extends Component {
         <div className="f4 h1 tc mb4">
           {this.state.showAnswer && <div>{this.answer()}</div>}
         </div>
-        <div className="h2 tc">
+        <div className="h3 tc">
           {this.state.showControls && (
             <button
               onClick={() => this.handleNextQuestion()}
@@ -201,6 +193,14 @@ class Exercise extends Component {
             >
               Show Answer
             </button>
+          )}
+        </div>
+        <div className="fr pointer" onClick={() => this.handleToggleControls()}>
+          Controls
+          {this.state.showControls ? (
+            <i class="ml2 fas fa-toggle-on green" />
+          ) : (
+            <i class="ml2 fas fa-toggle-off red" />
           )}
         </div>
         <Examples examples={this.state.examples} socket={this.props.socket} />
