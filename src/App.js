@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import Modal from "./Modal";
 import Info from "./Info";
-import InfoIcon from "./InfoIcon";
 import VerbList from "./VerbList";
 import Practise from "./Practise";
 import SharedExercise from "./SharedExercise";
@@ -33,7 +32,7 @@ class App extends Component {
             Verbs Challenge
           </Link>
           <div className="fr mr3" onClick={() => this.openModal()}>
-            <InfoIcon />
+            <i class="f2 fas fa-info-circle white pointer" />
           </div>
         </header>
         <main className="mw7 center">
